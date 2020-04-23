@@ -56,7 +56,7 @@ namespace FishApp.Controllers
 
             return View(viewModel);
         }
-        //TODO: Adda så en user har nickname istä'llet för email.
+     
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public IActionResult Create(CatchViewModel model)
@@ -90,6 +90,21 @@ namespace FishApp.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult MyPage()
+        {
+            var model = _userRepository.GetUserByUserName(User.Identity.Name);
+            //var userId = userByUserName.Id;
+
+            //var model = _userRepository.GetUserById(userId);
+            if (model == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(new MyPageViewModel(model));
+        }
+
 
         [HttpGet]
         public IActionResult Details(int id)
