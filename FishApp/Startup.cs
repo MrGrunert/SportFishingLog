@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using FishApp.Interfaces;
 using FishApp.Repositories;
 using FishApp.Models;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace FishApp
 {
@@ -67,6 +69,9 @@ namespace FishApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            var ci = new CultureInfo("sv-SE");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -74,6 +79,19 @@ namespace FishApp
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(ci),
+                SupportedCultures = new List<CultureInfo>
+                {
+                    ci,
+                },
+                SupportedUICultures = new List<CultureInfo>
+                {
+                    ci,
+                }
+            });
 
             app.UseEndpoints(endpoints =>
             {

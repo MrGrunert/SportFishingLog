@@ -12,6 +12,7 @@ namespace FishApp.Models
         public int Id { get; set; }
 
         [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [Display(Name = "Fångstdatum")]
         public DateTime Date { get; set; }
 
