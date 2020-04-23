@@ -1,0 +1,25 @@
+﻿@model Catch
+
+
+
+<section class="panel panel-default" id="_summaryId">
+    <h3 class="panel-heading" , id="new">@Model.Fish.Name</h3>
+    <div class="panel-body">
+        Fiskare: @Model.User.UserName
+    </div>
+    <div class="panel-body">
+        Fångstdatum: @Html.Raw(Model.Date.ToString("MMMM dd, yyyy"))
+    </div>
+    <div class="panel-body">
+        Plats: @Model.FishingGround.Name
+    </div>
+    <div hidden="">
+        @Model.Id
+    </div>
+    <div class="panel-footer">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-info" asp-action="Details" asp-route-id="@Model.Id">Mer info</a>
+        }
+    </div>
+</section>

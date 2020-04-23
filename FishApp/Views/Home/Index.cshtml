@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@model HomePageViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container" id="index-view">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div id="welcome-text">
+            <h2>Välkommen @User.Identity.Name</h2>
+        </div>
+    }
+    @if (User.Identity.IsAuthenticated == false)
+    {
+        <div id="welcome-text">
+            <h2>Välkommen till Fiskedagboken!</h2>
+
+        </div>
+
+    }
+
+    <div>
+        @*@await Html.PartialAsync("Carousel")*@
+        <hr />
+    </div>
+    @if (User.Identity.IsAuthenticated == false)
+    {
+
+        <div id="p-introtext">
+            <p> Detta är ett projekt som jag jobbar på under min fritid, tanken är att det ska hållas ganska lokalt i västra götalands län.</p>
+            <p>
+                Här nedan ser ni de 3 senaste fångsterna ni registrerat på sidan. Vill du se fler eller själv kunna lägga till
+                så kan du enkelt skapa en användare och börja logga dina fångster.
+            </p>
+        </div>
+        <hr />
+    }
+</div>
+
+@*TODO: Fixa taghelper*@
+ @*<partial name="_Summary" model="Model.Catches.Take(3)" />*@
+
+@foreach (var fishCatch in Model.Catches)
+{
+    @*@Html.Partial("_Summary", fishCatch)*@
+    //<partial name="_Summary" model="Model.Catches.ToList()"/>
+    //<partial name="_StatusMessage" model="Model.StatusMessage" />
+
+    @Html.Partial("_Summary", fishCatch)
+}
+
+
+
+
+
+
+
+@*<div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+          <a class="btn btn-primary" id="btn.create" asp-controller="Home" asp-action="Create">Lägg till fångst</a>
+    </div>*@
