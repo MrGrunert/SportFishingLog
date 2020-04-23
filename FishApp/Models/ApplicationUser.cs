@@ -10,6 +10,6 @@ namespace FishApp.Models
     {
         public virtual ICollection<IdentityUserClaim<int>> Claims { get; set; }
         public ICollection<Catch> Catches { get; set; }
-        public string CustomTag { get; set; }
+       // public string CustomTag { get; set; }
     }
 }
