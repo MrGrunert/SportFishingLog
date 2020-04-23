@@ -12,6 +12,7 @@ namespace FishApp.Models
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Fångstdatum")]
         public DateTime Date { get; set; }
 
         [Required, Range(1, int.MaxValue)]
@@ -36,8 +37,13 @@ namespace FishApp.Models
         [Required]
         public int FishingGroundId { get; set; }
 
+        [Display(Name = "Fiskare")]
         public ApplicationUser User { get; set; }
+
+        [Display(Name = "Fångstplats")]
         public FishingGround FishingGround { get; set; }
+
+        [Display(Name = "Art")]
         public Fish Fish { get; set; }
 
         public Catch()
