@@ -6,17 +6,39 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <section class="panel panel-default">
-        <h3 class="panel-heading">Min sida</h3>
-        <div class="panel-body">
-            Användare: @Model.User.UserName
-        </div>
-        <div class="panel-body">
-            Efternamn: @Model.User.Email
-        </div>
-        <div class="panel-body">
-            Antal fångster: @Model.User.Catches
-        </div>
+<section class="panel panel-default">
+    <h3 class="panel-heading">Min sida</h3>
+    <div class="panel-body">
+        Användare: @Model.User.UserName
+    </div>
+    <div class="panel-body">
+        Efternamn: @Model.User.Email
+    </div>
+    <div class="panel-body">
+        Antal fångster: @Model.User.Catches.Count
+    </div>
 
-    </section>
+</section>
 
+<h2>Mina fångster</h2>
+@foreach (var fishCatch in Model.Catches.OrderByDescending(c => c.Date))
+{
+
+    <div class="myfishes">
+
+        <section class="panel panel-default" id="myfishpanel">
+            <h3 class="panel-heading" , id="new">@fishCatch.Fish.Name</h3>
+            <div class="panel-body">
+                Fiskeplats: @fishCatch.FishingGround.Name
+            </div>
+            <div class="panel-body">
+                Fångstdatum: @Html.Raw(fishCatch.Date.ToString("MMMM dd, yyyy"))
+            </div>
+            <div>
+                <a class="btn btn-primary" id="btn.editCatch" asp-controller="Home" asp-action="EditCatch" asp-route-id="@fishCatch.Id">Editera fångst</a>
+                <a class="btn btn-warning" id="btn-delete" asp-controller="Home" asp-action="Delete" asp-route-id="@fishCatch.Id">Ta bort fisk</a>
+            </div>
+        </section>
+    </div>
+
+}

@@ -94,10 +94,10 @@ namespace FishApp.Controllers
         [HttpGet]
         public IActionResult MyPage()
         {
-            var model = _userRepository.GetUserByUserName(User.Identity.Name);
-            //var userId = userByUserName.Id;
+            var userByUserName = _userRepository.GetUserByUserName(User.Identity.Name);
+            var userId = userByUserName.Id;
 
-            //var model = _userRepository.GetUserById(userId);
+            var model = _userRepository.GetUserByUserId(userId);
             if (model == null)
             {
                 return RedirectToAction(nameof(Index));
