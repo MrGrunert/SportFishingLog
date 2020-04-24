@@ -53,6 +53,7 @@ namespace FishApp.Areas.Identity.Pages.Account
             public string UserName { get; set; }
 
             [Required]
+            [Display(Name = "Lösenord")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
 

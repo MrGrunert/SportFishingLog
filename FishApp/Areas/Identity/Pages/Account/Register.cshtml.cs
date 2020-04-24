@@ -60,11 +60,11 @@ namespace FishApp.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "Ditt {0} måste vara minst {2} och max {1} tecken långt.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Lösenord")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Upprepa lösenord")]
             [Compare("Password", ErrorMessage = "Lösenorden matchar inte.")]
             public string ConfirmPassword { get; set; }
         }
@@ -85,7 +85,7 @@ namespace FishApp.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User created a new account with password.");
+                    _logger.LogInformation("Användare skapade ett nytt konto med lösenord.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
