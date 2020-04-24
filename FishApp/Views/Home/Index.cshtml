@@ -19,9 +19,9 @@
     @if (User.Identity.IsAuthenticated == false)
     {
         <div id="welcome-text">
-            <h2>Välkommen till Fiskedagboken!</h2>
-
+            <h1>Välkommen till Fiskloggen!</h1>
         </div>
+        <hr/>
 
     }
 
@@ -35,11 +35,11 @@
         <div id="p-introtext">
             <p> Detta är ett projekt som jag jobbar på under min fritid, tanken är att det ska hållas ganska lokalt i västra götalands län.</p>
             <p>
-                Här nedan ser ni de 3 senaste fångsterna ni registrerat på sidan. Vill du se fler eller själv kunna lägga till
+                Här nedan ser ni de 3 senaste fångsterna som registrerats på sidan. Vill du se fler eller själv kunna lägga till
                 så kan du enkelt skapa en användare och börja logga dina fångster.
             </p>
         </div>
-        <hr />
+        <hr/>
     }
 </div>
 
@@ -48,21 +48,8 @@
 
 @foreach (var fishCatch in Model.Catches)
 {
-    @*@Html.Partial("_Summary", fishCatch)*@
-    //<partial name="_Summary" model="Model.Catches.ToList()"/>
-    //<partial name="_StatusMessage" model="Model.StatusMessage" />
 
+<div id="divcatchIndex">
     @Html.Partial("_Summary", fishCatch)
+</div>
 }
-
-
-
-
-
-
-
-@*<div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-          <a class="btn btn-primary" id="btn.create" asp-controller="Home" asp-action="Create">Lägg till fångst</a>
-    </div>*@
