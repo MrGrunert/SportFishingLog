@@ -10,6 +10,11 @@
         <div id="welcome-text">
             <h2>Välkommen @User.Identity.Name</h2>
         </div>
+
+        <div>
+            <a class="btn btn-info" id="btn.create" asp-controller="Home" asp-action="Create">Lägg till fångst</a>
+        </div>
+
     }
     @if (User.Identity.IsAuthenticated == false)
     {
