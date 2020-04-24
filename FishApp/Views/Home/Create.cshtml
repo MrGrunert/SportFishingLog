@@ -4,15 +4,13 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>CatchViewModel</h4>
+<h2>Logga fångst</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div id="create-div">
-                <label>  @Html.LabelFor(p => p.ParishesSelectListItems)</label>
+                @Html.LabelFor(p => p.ParishesSelectListItems)
                 @Html.DropDownListFor(p => p.ParishId, Model.ParishesSelectListItems.OrderBy(c => c.Text), new { @class = "form-control", Text = "Active", Value = "True", Selected = "True" })
                 @Html.ValidationMessageFor(p => p.ParishesSelectListItems)
             </div>
@@ -49,80 +47,21 @@
 
             <div class="form-group" id="create-div-notes">
                 @Html.LabelFor(n => n.Notes)
-                @Html.TextAreaFor(n => n.Notes, new { @class = "form-control", @rows = "10" })
+                @Html.TextAreaFor(n => n.Notes, new { @class = "form-control", @rows = "7" })
                 @Html.ValidationMessageFor(w => w.Length)
             </div>
 
             <div>
-                <input class="btn btn-primary" type="submit" value="Spara" />
-                <input class="btn btn-default" type="submit" style="float: right;" id="btn-create-home" asp-action="Index" value="Hem" />
+                <input class="btn btn-success" type="submit" value="Spara" />
+                <input class="btn btn-dark" type="submit" style="float: right;" id="btn-create-home" asp-action="Index" value="Hem" />
             </div>
-            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Id" class="control-label"></label>
-            <input asp-for="Id" class="form-control" />
-            <span asp-validation-for="Id" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="FishingGroundId" class="control-label"></label>
-            <input asp-for="FishingGroundId" class="form-control" />
-            <span asp-validation-for="FishingGroundId" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Date" class="control-label"></label>
-            <input asp-for="Date" class="form-control" />
-            <span asp-validation-for="Date" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Length" class="control-label"></label>
-            <input asp-for="Length" class="form-control" />
-            <span asp-validation-for="Length" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Weight" class="control-label"></label>
-            <input asp-for="Weight" class="form-control" />
-            <span asp-validation-for="Weight" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Notes" class="control-label"></label>
-            <input asp-for="Notes" class="form-control" />
-            <span asp-validation-for="Notes" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="FishId" class="control-label"></label>
-            <input asp-for="FishId" class="form-control" />
-            <span asp-validation-for="FishId" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="ParishId" class="control-label"></label>
-            <input asp-for="ParishId" class="form-control" />
-            <span asp-validation-for="ParishId" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="FishingGroundName" class="control-label"></label>
-            <input asp-for="FishingGroundName" class="form-control" />
-            <span asp-validation-for="FishingGroundName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="FishingGroundType" class="control-label"></label>
-            <input asp-for="FishingGroundType" class="form-control" />
-            <span asp-validation-for="FishingGroundType" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="FishName" class="control-label"></label>
-            <input asp-for="FishName" class="form-control" />
-            <span asp-validation-for="FishName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
-        </div>*@
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@*<div>
+    <a asp-action="Index">Tillbaka</a>
+</div>*@
 
 @*@section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
