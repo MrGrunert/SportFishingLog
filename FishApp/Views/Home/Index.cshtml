@@ -4,41 +4,47 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container" id="index-view">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <div id="welcome-text">
-            <h2>Välkommen @User.Identity.Name</h2>
-        </div>
-        <hr/>
+    <div class="container" id="index-view">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div id="welcome-text">
+                <h2>Välkommen @User.Identity.Name</h2>
+            </div>
+            <hr />
 
-    }
-    @if (User.Identity.IsAuthenticated == false)
-    {
-        <div id="welcome-text">
-            <h1>Välkommen till Fiskloggen!</h1>
-        </div>
-        <hr/>
+            <div id="p-introtext">
+                <p> Här kan du navigera till din sida, lägga till fångst eller deltaga i tävlingar.</p>
+                <p>
+                    Vill du editera din fångst klicka på din fångst, syns den inte här gå till "min sida" där är alla dina fångster listade.
+                </p>
+            </div>
+            <hr />
 
-    }
+        }
 
-    <div>
-        @await Html.PartialAsync("Carousel")
-        <hr />
+
+        @if (User.Identity.IsAuthenticated == false)
+        {
+            <div id="welcome-text">
+                <h1>Välkommen till Fiskloggen!</h1>
+            </div>
+            <hr />
+
+            <div>
+                @await Html.PartialAsync("Carousel")
+                <hr />
+            </div>
+
+            <div id="p-introtext">
+                <p> Detta är ett projekt som jag jobbar på under min fritid, tanken är att det ska hållas ganska lokalt i västra götalands län.</p>
+                <p>
+                    Här nedan ser ni de 3 senaste fångsterna som registrerats på sidan. Vill du se fler eller själv kunna lägga till
+                    så kan du enkelt skapa en användare och börja logga dina fångster.
+                </p>
+            </div>
+            <hr />
+        }
     </div>
-    @if (User.Identity.IsAuthenticated == false)
-    {
-
-        <div id="p-introtext">
-            <p> Detta är ett projekt som jag jobbar på under min fritid, tanken är att det ska hållas ganska lokalt i västra götalands län.</p>
-            <p>
-                Här nedan ser ni de 3 senaste fångsterna som registrerats på sidan. Vill du se fler eller själv kunna lägga till
-                så kan du enkelt skapa en användare och börja logga dina fångster.
-            </p>
-        </div>
-        <hr/>
-    }
-</div>
 
 @*TODO: Fixa taghelper*@
  @*<partial name="_Summary" model="Model.Catches.Take(3)" />*@
