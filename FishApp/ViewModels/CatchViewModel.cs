@@ -23,7 +23,7 @@ namespace FishApp.ViewModels
         [Display(Name = "Längd i CM")]
         public double Length { get; set; }
 
-        [Required, Range(1, 1100, ErrorMessage = "vikt måste vara mellan 1-1100kg")]
+        [Required, Range(0.1, 1100.0, ErrorMessage = "vikt måste vara mellan 1-1100kg")]
         [Display(Name = "Vikt i KG")]
         public double Weight { get; set; }
 
