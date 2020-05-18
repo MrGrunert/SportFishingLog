@@ -117,6 +117,67 @@ namespace FishApp.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult EditCatch(int id)
+        {
+            var model = _catchRepository.Get(id);
+            if (model == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            CatchViewModel catchView = new CatchViewModel
+            {
+                Id = model.Id,
+                FishingGroundId = model.FishingGroundId,
+                Date = model.Date,
+                FishingGroundType = model.FishingGround.Type,
+                FishId = model.FishId,
+                FishingGroundName = model.FishingGround.Name,
+                Length = model.Length,
+                Weight = model.Weight,
+                ParishId = model.FishingGround.ParishId,
+                Notes = model.Notes,
+                ParishesSelectListItems = GetParischesListItem(),
+                FishesSelectListItems = GetFishesListItem()
+            };
+
+            return View(catchView);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditCatch(CatchViewModel fCatch)
+        {
+            var catchToEdit = _catchRepository.Get(fCatch.Id);
+            var fishingGround = _fishingGroundRepository.GetFishingGroundById(fCatch.FishingGroundId);
+
+            if (ModelState.IsValid)
+            {
+                fishingGround.Id = fCatch.FishingGroundId;
+                fishingGround.Name = fCatch.FishingGroundName;
+                fishingGround.Type = fCatch.FishingGroundType;
+                fishingGround.ParishId = fCatch.ParishId;
+                catchToEdit.Date = fCatch.Date;
+                catchToEdit.Length = fCatch.Length;
+                catchToEdit.Weight = fCatch.Weight;
+                catchToEdit.Notes = fCatch.Notes;
+                catchToEdit.FishId = fCatch.FishId;
+
+
+                catchToEdit.FishingGround = fishingGround;
+                _catchRepository.UpdateCatch(catchToEdit);
+
+                return RedirectToAction("Details", "Home", new { id = catchToEdit.Id });
+            }
+
+            fCatch.FishesSelectListItems = GetFishesListItem();
+            fCatch.ParishesSelectListItems = GetParischesListItem();
+
+            return View(fCatch);
+
+        }
+
 
         [HttpGet]
         public IActionResult Delete(int id)
