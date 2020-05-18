@@ -117,6 +117,38 @@ namespace FishApp.Controllers
             return View(model);
         }
 
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var model = _catchRepository.Get(id);
+            if (model == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            DeleteCatchViewModel delViewModel = new DeleteCatchViewModel
+            {
+                FishingGround = model.FishingGround.Name,
+                FishName = model.Fish.Name,
+                Date = model.Date.ToString("d"),
+                Id = model.Id
+            };
+            return View(delViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(DeleteCatchViewModel deleteCatch)
+        {
+
+            var fishToDelete = _catchRepository.Get(deleteCatch.Id);
+            _catchRepository.DeleteCatch(fishToDelete);
+            _catchRepository.Commit();
+
+            return RedirectToAction("MyPage", "Home");
+        }
+
+
         private List<SelectListItem> GetParischesListItem()
         {
             var parishCategory = _parishRepository.Parishes;

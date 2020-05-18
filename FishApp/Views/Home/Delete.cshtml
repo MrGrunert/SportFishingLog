@@ -1,0 +1,38 @@
+﻿@model FishApp.ViewModels.DeleteCatchViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ta bort</h1>
+
+<h3>Ta bort fångst?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FishName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FishName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FishingGround)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FishingGround)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Ta bort" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
