@@ -21,6 +21,7 @@ namespace FishApp.Controllers
         private IFishRepository _fishRepository;
         private IParishRepository _parishRepository;
         private ICatchRepository _catchRepository;
+        private IFishingGroundRepository _fishingGroundRepository;
       
 
         public HomeController(
@@ -28,13 +29,15 @@ namespace FishApp.Controllers
             IUserRepository userRepository, 
             IFishRepository fishRepository, 
             IParishRepository parishRepository, 
-            ICatchRepository catchRepository)
+            ICatchRepository catchRepository,
+            IFishingGroundRepository fishingGroundRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
             _fishRepository = fishRepository;
             _parishRepository = parishRepository;
             _catchRepository = catchRepository;
+            _fishingGroundRepository = fishingGroundRepository;
         }
 
         [AllowAnonymous]

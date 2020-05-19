@@ -53,6 +53,7 @@ namespace FishApp
             services.AddScoped<ICatchRepository, CatchRepository>();
             services.AddScoped<IFishRepository, FishRepository>();
             services.AddScoped<IParishRepository, ParishRepository>();
+            services.AddScoped<IFishingGroundRepository, FishingGroundRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
