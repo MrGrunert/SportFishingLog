@@ -53,15 +53,11 @@
 
             <div>
                 <input class="btn btn-success" type="submit" value="Spara" />
-                <input class="btn btn-dark"  style="float: right;" id="btn-create-home" asp-action="Index" value="Hem" />
+                <a class="btn btn-dark" style="padding-left:1rem;" asp-action="Index">Hem</a>
             </div>
         </form>
     </div>
 </div>
-
-@*<div>
-    <a asp-action="Index">Tillbaka</a>
-</div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

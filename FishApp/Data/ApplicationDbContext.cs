@@ -33,6 +33,7 @@ namespace FishApp.Data
         public DbSet<Fish> Fish { get; set; }
         public DbSet<FishingGround> FishinGrounds { get; set; }
         public DbSet<Parish> Parishes { get; set; }
-
+        //TODO:
+        //public DbSet<Contest> Contest { get; set; }
     }
 }
