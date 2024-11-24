@@ -29,15 +29,15 @@
                 @Html.TextBoxFor(fg => fg.FishingGroundName, new { @class = "form-control" })
                 @Html.ValidationMessageFor(fg => fg.FishingGroundName)
             </div>
-            <div class="form-group" id="create-div">
-                @Html.LabelFor(l => l.Length)
-                @Html.TextBoxFor(l => l.Length, new { @class = "form-control" })
-                @Html.ValidationMessageFor(l => l.Length)
+            <div class="mb-3">
+                <label asp-for="Length" class="form-label"></label>
+                <input asp-for="Length" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Length" class="text-danger"></span>
             </div>
-            <div class="form-group" id="create-div">
-                @Html.LabelFor(w => w.Weight)
-                @Html.TextBoxFor(w => w.Weight, new { @class = "form-control" })
-                @Html.ValidationMessageFor(w => w.Weight)
+            <div class="mb-3">
+                <label asp-for="Weight" class="form-label"></label>
+                <input asp-for="Weight" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
             </div>
             <div class="form-group" id="create-div">
                 <label asp-for="Date"></label>
